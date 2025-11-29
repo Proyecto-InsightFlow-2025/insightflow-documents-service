@@ -10,7 +10,7 @@ using documents_service_api.src.Helpers;
 namespace documents_service_api.src.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("documents")]
     public class DocumentController : ControllerBase
     {
         private readonly DocumentService _documentService;
@@ -29,9 +29,9 @@ namespace documents_service_api.src.Controllers
             }
             return Ok(document);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                return StatusCode(500, ex.Message);
+                return StatusCode(500, new { Message = "An error occurred while processing your request."});
             }
         }
         [HttpPost]

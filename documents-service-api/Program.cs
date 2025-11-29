@@ -1,16 +1,18 @@
+
 var builder = WebApplication.CreateBuilder(args);
-
-// Add services to the container.
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
-
-var app = builder.Build();
-
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+builder.Services.AddSingleton<IDocumentRepository, DocumentRepository>();
+builder.Services.AddCors(options =>
 {
-    app.MapOpenApi();
-}
-
+    options.AddDefaultPolicy(policy =>
+    {
+        policy.AllowAnyOrigin()
+              .AllowAnyHeader()
+              .AllowAnyMethod();
+    });
+});
+var app = builder.Build();
+app.UseCors();
+app.MapControllers();
 app.UseHttpsRedirection();
 app.Run();

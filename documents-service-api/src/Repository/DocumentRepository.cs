@@ -38,16 +38,16 @@ namespace documents_service_api.src.Repository
         public async Task<bool> SoftDeleteDocument(Guid id)
         {
             var document = _documents.FirstOrDefault(d => d.id == id);
-            if (document != null)
+            if (document != null && !document.soft_deleted)
             {
                 document.soft_deleted = true;
                 return await Task.FromResult(true);
             }
             return await Task.FromResult(false);
         }
-        public async Task<List<Document>> GetAllDocumentsInWorkspace(Guid workspace_id)
+        public async Task<List<Document>> GetAllDocuments()
         {
-            var documents = _documents.Where(d => d.workspace_id == workspace_id && !d.soft_deleted).ToList();
+            var documents = _documents.Where(d => !d.soft_deleted).ToList();
             return await Task.FromResult(documents);
         }
     }

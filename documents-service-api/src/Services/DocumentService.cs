@@ -34,10 +34,10 @@ namespace documents_service_api.src.Services
         {
             return await _documentRepository.SoftDeleteDocument(id);
         }
-        public async Task<List<DocumentVisualizerDto>> GetAllDocumentsInWorkspace(Guid workspace_id)
+        public async Task<List<DocumentVisualizerDto>> GetAllDocuments()
         {
-            var documents = await _documentRepository.GetAllDocumentsInWorkspace(workspace_id);
-            return documents.Select(d => DocumentMapper.ToDocumentVisualizerDto(d)).ToList();
+            var documents = await _documentRepository.GetAllDocuments();
+            return documents.Select(DocumentMapper.ToDocumentVisualizerDto).ToList();
         }
     }
 }

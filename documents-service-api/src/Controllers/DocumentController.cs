@@ -50,7 +50,7 @@ namespace documents_service_api.src.Controllers
         [HttpPatch("{id}")]
         public async Task<IActionResult> UpdateDocument(Guid id, [FromBody] UpdateDocumentDto request)
         {
-            if (string.IsNullOrWhiteSpace(id.ToString()) || string.IsNullOrWhiteSpace(request.title) || string.IsNullOrWhiteSpace(request.icon) || request.content == null || request.content.Count == 0){
+            if (string.IsNullOrWhiteSpace(id.ToString()) || string.IsNullOrWhiteSpace(request.title) || string.IsNullOrWhiteSpace(request.icon) || request.content == null){
                 return BadRequest(new { Message = "All fields are required" });
             }
             var updated = await _documentService.UpdateDocument(request, id);

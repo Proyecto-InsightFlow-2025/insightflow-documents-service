@@ -16,7 +16,7 @@ namespace documents_service_api.src.Helpers
                 title = dto.title,
                 icon = dto.icon ?? "📄",
                 workspace_id = dto.workspace_id,
-                content = dto.content ?? new List<object>(),
+                content = new List<object>(),
                 soft_deleted = false
             };
         }

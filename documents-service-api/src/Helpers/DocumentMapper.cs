@@ -24,10 +24,9 @@ namespace documents_service_api.src.Helpers
         {
             return new Document
             {
-                id = Guid.NewGuid(),
-                title = dto.title ?? "",
-                icon = dto.icon ?? "📄",
-                content = dto.content ?? new List<object>(),
+                title = dto.title,
+                icon = dto.icon,
+                content = dto.content
             };
         }
         public static DocumentVisualizerDto ToDocumentVisualizerDto(Document document)
@@ -36,7 +35,8 @@ namespace documents_service_api.src.Helpers
             {
                 title = document.title,
                 icon = document.icon,
-                content = document.content
+                content = document.content,
+                soft_deleted = document.soft_deleted
             };
         }
     }

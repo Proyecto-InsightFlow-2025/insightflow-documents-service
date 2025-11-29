@@ -10,5 +10,6 @@ namespace documents_service_api.src.Dtos
         public string title { get; set; }
         public string icon { get; set; }
         public object content { get; set; }
+        public bool soft_deleted { get; set; }
     }
 }

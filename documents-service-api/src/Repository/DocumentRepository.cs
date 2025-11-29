@@ -26,12 +26,13 @@ namespace documents_service_api.src.Repository
         public async Task<Document?> UpdateDocument(Document document, Guid id)
         {
             var existingDocument = _documents.FirstOrDefault(d => d.id == id);
-            if (existingDocument != null)
+            if (existingDocument == null)
             {
-                existingDocument.title = document.title;
-                existingDocument.icon = document.icon;
-                existingDocument.content = document.content;
+                return null;
             }
+            existingDocument.title = document.title;
+            existingDocument.icon = document.icon;
+            existingDocument.content = document.content;
             return await Task.FromResult(existingDocument);
         }
         public async Task<bool> SoftDeleteDocument(Guid id)

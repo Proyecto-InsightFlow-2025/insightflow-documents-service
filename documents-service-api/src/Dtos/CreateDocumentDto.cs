@@ -9,6 +9,7 @@ namespace documents_service_api.src.Dtos
     {
         public string title { get; set; }
         public string? icon { get; set; }
+        public List<object>? content { get; set; }
         public Guid workspace_id { get; set; }
     }
 }

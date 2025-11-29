@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using documents_service_api.src.Models;
 
 namespace documents_service_api.src.Repository
 {
@@ -20,25 +21,25 @@ namespace documents_service_api.src.Repository
         }
         public async Task<Document?> GetDocumentById(Guid id)
         {
-            var document = _documents.FirstOrDefault(d => d.id == id);
+            var document = _documents.FirstOrDefault(d => d.id == id && !d.soft_deleted);
             return await Task.FromResult(document);
         }
         public async Task<Document?> UpdateDocument(Document document, Guid id)
         {
-            var existingDocument = _documents.FirstOrDefault(d => d.id == id);
+            var existingDocument = _documents.FirstOrDefault(d => d.id == id && !d.soft_deleted);
             if (existingDocument == null)
             {
                 return null;
             }
-            existingDocument.title = document.title;
-            existingDocument.icon = document.icon;
-            existingDocument.content = document.content;
+            existingDocument.title = document.title ?? existingDocument.title;
+            existingDocument.icon = document.icon ?? existingDocument.icon;
+            existingDocument.content = document.content ?? existingDocument.content;
             return await Task.FromResult(existingDocument);
         }
         public async Task<bool> SoftDeleteDocument(Guid id)
         {
-            var document = _documents.FirstOrDefault(d => d.id == id);
-            if (document != null && !document.soft_deleted)
+            var document = _documents.FirstOrDefault(d => d.id == id && !d.soft_deleted);
+            if (document != null)
             {
                 document.soft_deleted = true;
                 return await Task.FromResult(true);
@@ -47,7 +48,7 @@ namespace documents_service_api.src.Repository
         }
         public async Task<List<Document>> GetAllDocuments()
         {
-            var documents = _documents.Where(d => !d.soft_deleted).ToList();
+            var documents = _documents.ToList();
             return await Task.FromResult(documents);
         }
     }

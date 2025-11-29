@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using documents_service_api.src.Dtos;
-using documents_service_api.src.Models;
 using documents_service_api.src.Helpers;
 namespace documents_service_api.src.Services
 {
@@ -17,11 +16,16 @@ namespace documents_service_api.src.Services
         public async Task<DocumentVisualizerDto> CreateDocument(CreateDocumentDto createDocumentDto)
         {
             var document = DocumentMapper.ToDocument(createDocumentDto);
-            return await DocumentMapper.ToDocumentVisualizerDto(await _documentRepository.CreateDocument(document));
+            var createdDocument = await _documentRepository.CreateDocument(document);
+            return DocumentMapper.ToDocumentVisualizerDto(createdDocument);
         }
         public async Task<DocumentVisualizerDto?> GetDocumentById(Guid id)
         {
             var document = await _documentRepository.GetDocumentById(id);
+            if (document == null)
+            {
+                return null;
+            }
             return DocumentMapper.ToDocumentVisualizerDto(document);
         }
         public async Task<DocumentVisualizerDto?> UpdateDocument(UpdateDocumentDto updateDocumentDto, Guid id)

@@ -2,8 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
-namespace documents_service_api.src.models
+namespace documents_service_api.src.Models
 {
     public class Document
     {

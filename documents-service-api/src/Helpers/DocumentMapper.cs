@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using documents_service_api.src.Dtos;
-using documents_service_api.src.models;
+using documents_service_api.src.Models;
 namespace documents_service_api.src.Helpers
 {
     public class DocumentMapper
@@ -16,7 +16,7 @@ namespace documents_service_api.src.Helpers
                 title = dto.title,
                 icon = dto.icon ?? "📄",
                 workspace_id = dto.workspace_id,
-                content = new List<object>(),
+                content = dto.content ?? new List<object>(),
                 soft_deleted = false
             };
         }
@@ -24,18 +24,19 @@ namespace documents_service_api.src.Helpers
         {
             return new Document
             {
-                title = dto.title,
-                icon = dto.icon,
-                content = dto.content
+                title = dto.title ?? null,
+                icon = dto.icon ?? null,
+                content = dto.content ?? null
             };
         }
         public static DocumentVisualizerDto ToDocumentVisualizerDto(Document document)
         {
             return new DocumentVisualizerDto
             {
+                id = document.id,
                 title = document.title,
                 icon = document.icon,
-                content = document.content,
+                content = (List<object>)document.content,
                 soft_deleted = document.soft_deleted
             };
         }

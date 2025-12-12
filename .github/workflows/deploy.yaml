@@ -22,7 +22,6 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v5
         with:
-          context: ./documents-service-api
-          file: ./documents-service-api/Dockerfile
+          context: "{{defaultContext}}"
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/document-service-backend:latest , ${{ secrets.DOCKERHUB_USERNAME }}/document-service-backend:${{ github.sha }}

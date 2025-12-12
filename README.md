@@ -61,6 +61,57 @@ El servicio expone una API RESTful
 | `PATCH` | `/documents/{id}` | `UpdateDocumentDto` | Actualiza parcialmente (título, icono, contenido) un documento. |
 | `DELETE` | `/documents/{id}` | `N/A` | Realiza un borrado lógico (soft delete) del documento. |
 
+## Ejemplos de uso
+### Crear un Documento
+Crea un documento asociado a un espacio de trabajo.
+- **Método:** `POST`
+- **Endpoint:** `/documents`
+- **Body (JSON):**
+    ```
+    {
+      "title": "Planificación Q1 2025",
+      "icon": "🚀",
+      "workspace_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+    }
+    ```
+### Obtener Todos los Documentos
+Devuelve la lista de todos los documentos.
+- **Método:** `GET`
+- **Endpoint:** `/documents`
+
+### Obtener Documento por ID
+Obtiene el detalle completo de un documento específico.
+- **Método:** `GET`
+- **Endpoint:** `/documents/{id}`
+- **Ejemplo:** `/documents/3fa85f64-5717-4562-b3fc-2c963f66afa6`
+
+### Actualizar Documento
+Actualiza el título, ícono y contenido del documento.
+- **Método:** `PATCH`
+- **Endpoint:** `/documents/{id}`
+- **Body (JSON):**
+    ```
+    {
+      "title": "Planificación Q1 2025 - Revisada",
+      "icon": "✅",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Este es el contenido actualizado del documento."
+        },
+        {
+          "type": "header",
+          "text": "Sección 1"
+        }
+      ]
+    }
+    ```
+### Eliminar Documento (Soft Delete)
+Realiza un borrado lógico del documento.
+- **Método:** `DELETE`
+- **Endpoint:** `/documents/{id}`
+- **Ejemplo:** `/documents/3fa85f64-5717-4562-b3fc-2c963f66afa6`
+
 ## Instalación y Configuración
 
 - **.NET 9 SDK:** [Download](https://dotnet.microsoft.com/download/dotnet/9.0)

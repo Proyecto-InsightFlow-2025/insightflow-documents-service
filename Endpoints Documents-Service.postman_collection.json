@@ -1,0 +1,131 @@
+{
+	"info": {
+		"_postman_id": "16e6bf6d-33eb-4c8e-8b87-110db5e8d397",
+		"name": "Endpoints Documents-Service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "35122636"
+	},
+	"item": [
+		{
+			"name": "CreateDccument",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"title\": \"Planificación Q1 2025\",\r\n  \"icon\": \"🚀\",\r\n  \"workspace_id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://document-service-backend.onrender.com/documents",
+					"protocol": "https",
+					"host": [
+						"document-service-backend",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"documents"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetDocuments",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://document-service-backend.onrender.com/documents",
+					"protocol": "https",
+					"host": [
+						"document-service-backend",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"documents"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateDocument",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"title\": \"Planificación Q1 2025 - Revisada\",\r\n  \"icon\": \"✅\",\r\n  \"content\": [\r\n    {\r\n      \"type\": \"paragraph\",\r\n      \"text\": \"Este es el contenido actualizado del documento.\"\r\n    },\r\n    {\r\n      \"type\": \"header\",\r\n      \"text\": \"Sección 1\"\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://document-service-backend.onrender.com/documents/47b2c98d-2bb1-43d2-a4d4-a39022910081",
+					"protocol": "https",
+					"host": [
+						"document-service-backend",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"documents",
+						"47b2c98d-2bb1-43d2-a4d4-a39022910081"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetDocumentByID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://document-service-backend.onrender.com/documents/47b2c98d-2bb1-43d2-a4d4-a39022910081",
+					"protocol": "https",
+					"host": [
+						"document-service-backend",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"documents",
+						"47b2c98d-2bb1-43d2-a4d4-a39022910081"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteDocument",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://document-service-backend.onrender.com/documents/47b2c98d-2bb1-43d2-a4d4-a39022910081",
+					"protocol": "https",
+					"host": [
+						"document-service-backend",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"documents",
+						"47b2c98d-2bb1-43d2-a4d4-a39022910081"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

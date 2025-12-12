@@ -6,14 +6,22 @@ using documents_service_api.src.Models;
 
 namespace documents_service_api.src.Repository
 {
+    /// <summary>
+    /// Implementación del repositorio de documentos.
+    /// </summary>
     public class DocumentRepository : IDocumentRepository
     {
+        /// <summary>
+        /// Lista simulada de documentos como almacenamiento en memoria.
+        /// </summary>
         private readonly List<Document> _documents;
+        /// <summary>
+        /// Constructor de la clase DocumentRepository.
+        /// </summary>
         public DocumentRepository()
         {
             _documents = new List<Document>();
         }
-        
         public async Task<Document> CreateDocument(Document document)
         {
             _documents.Add(document);

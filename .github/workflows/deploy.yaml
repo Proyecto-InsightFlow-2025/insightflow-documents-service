@@ -23,5 +23,6 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: "{{defaultContext}}"
+          file: "./documents-service-api/Dockerfile"
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/document-service-backend:latest , ${{ secrets.DOCKERHUB_USERNAME }}/document-service-backend:${{ github.sha }}

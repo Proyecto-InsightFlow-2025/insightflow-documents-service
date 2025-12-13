@@ -65,7 +65,7 @@ namespace documents_service_api.src.Controllers
                 return BadRequest(new { Message = "Workspace ID is required" });
             }
             var document = await _documentService.CreateDocument(request);
-            return CreatedAtAction(nameof(GetDocumentById), new { id = document.id }, null);
+            return CreatedAtAction(nameof(GetDocumentById), new { id = document.id }, document);
         }
         /// <summary>
         /// Actualiza un documento existente.
